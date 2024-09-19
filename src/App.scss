@@ -20,7 +20,6 @@ body, html {
 .todoListWrapper {
     display: flex;
     justify-content: center;
-    margin-top: -40px;
 }
 
 .liButtonWrapper {
@@ -76,7 +75,17 @@ form {
 
 .app-title {
     font-family: 'Cedarville Cursive', cursive;
-    font-size: 80px;
+    font-size: 40px;
+    margin: 40px 40px 30px 40px;
+}
+
+.matrix {
+    display: flex;
+    justify-content: center;
+
+    &__title {
+        padding: 24px;
+    }
 }
 
 @media screen and (max-width: 568px) {
