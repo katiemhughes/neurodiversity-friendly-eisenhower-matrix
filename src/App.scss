@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+body, html {
+    // height: 100vh;
+    // margin: 0;
+    // width: 100%;
+    background-color: #121212;
+}
+
+.App {
+    text-align: center;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.todoListWrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.liButtonWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.app-title {
+    font-family: 'Cedarville Cursive', cursive;
+    font-size: 40px;
+    margin: 40px 40px 30px 40px;
+    color: #F8F8F2;
+}
+
+.matrix {
+    display: flex;
+    justify-content: center;
+    font-family: "Inria Sans", sans-serif;
+
+    &__table {
+        border-spacing: 0px;
+        border: 1px solid #F8F8F2;
+        border-radius: 4px;
+        width: 100%;
+        max-width: 800px;
+    }
+
+    &__row {
+        display: flex;
+        // grid-template-columns: repeat(2, 1fr);
+
+        @media screen and (min-width: 768px) {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    &__title {
+        font-weight: bold;
+        display: flex;
+        flex: 1;
+        font-size: 20px;
+        text-align: center;
+
+        @media screen and (min-width: 768px) {
+            padding: 24px;
+            font-size: 24px;
+        }
+
+        &--high {
+            background-color: #50FA7B;
+            color: #121212;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        &--low {
+            background-color: #FF5555;
+            color: #F8F8F2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 0px 4px 0px 0px;
+            
+            &.matrix__title--side {
+                border-radius: 0px 0px 0px 4px;
+            }   
+        }
+
+        &--header {
+            padding: 38px 12px;
+
+            @media screen and (min-width: 768px) {
+                padding: 38px;
+            }
+        }
+
+        &--side {
+            border-right: 1px solid #F8F8F2;
+
+            @media screen and (min-width: 768px) {
+                padding: 38px;
+            }
+        }
+    }
+
+    &__content {
+        display: block;
+        // border-right: none;
+        border-right: 1px solid #F8F8F2;
+        // width: 100%;
+        font-size: 18px;
+        border-top: 1px solid #F8F8F2;
+        font-weight: 400;
+        color: #F8F8F2;
+
+        @media screen and (min-width: 768px) {
+            padding: 12px;
+        }
+
+        &:last-of-type {
+            border-right: none;
+        }
+    }
+
+    &__icon {
+        &--battery {
+            transform: rotate(90deg);
+            margin-left: 12px;
+            width: 28px;
+            height: 40px;
+
+            @media screen and (min-width: 768px) {
+                width: 40px;
+            }
+        }
+
+        &--head {
+            margin-left: 6px;
+        }
+
+        &--tick {
+            color: #007BFF;
+        }
+    }
+}
+
+.content {
+    &__form {
+        display: flex;
+        padding: 4px;
+    }
+
+    &__input {
+        width: 100%;
+    }
+
+    &__list {
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__item {
+        padding: 10px;
+        list-style-type: none;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        text-align: left;
+
+        @media screen and (min-width: 768px) {
+            font-size: 18px;
+            padding: 12px;
+        }
+    }
+
+    &__button {
+        margin-left: 0;
+        padding: 10px;
+        font-size: 14px;
+        font-family: "Inria Sans", sans-serif;
+        border: 1px solid transparent;
+        cursor: pointer;
+
+        @media screen and (min-width: 1024px) {
+            padding: 8px;
+            margin-left: 12px;
+            font-size: 16px;
+        }
+
+        &:hover {
+            background-color: #F8F8F2;
+            border: 1px solid #007BFF;
+            color: #007BFF;
+        }
+
+        &--add {
+            background-color: #007BFF;
+            color: #F8F8F2;
+            font-weight: 700;
+            border-radius: 4px;
+            border: 1px solid transparent;
+            margin-left: 4px;
+        }
+
+        &--done {
+            border-radius: 100%;
+            background-color: transparent;
+            border: 1px solid transparent;
+        }
+    }
+}
