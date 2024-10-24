@@ -9,32 +9,20 @@ body, html {
     background-color: #1E1E1E;
 }
 
-.App {
+.matrix-app {
     text-align: center;
-}
 
-.app-container {
-    display: flex;
-    flex-direction: column;
-}
+    &__container {
+        display: flex;
+        flex-direction: column;
+    }
 
-.todoListWrapper {
-    display: flex;
-    justify-content: center;
-}
-
-.liButtonWrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-}
-
-.app-title {
-    font-family: 'Cedarville Cursive', cursive;
-    font-size: 40px;
-    margin: 40px 40px 30px 40px;
-    color: #F8F8F2;
+    &__title {
+        font-family: 'Cedarville Cursive', cursive;
+        font-size: 40px;
+        margin: 40px 40px 30px 40px;
+        color: #F8F8F2;
+    }
 }
 
 .matrix {
@@ -128,14 +116,21 @@ body, html {
 
     &__task {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
-        padding: 8px 0;
-        border-bottom: 1px solid #444;
-        text-align: left;
+        margin: 0;
 
-        &:last-child {
-            border-bottom: none;
+        &--item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #444;
+            text-align: left;
+
+            &:last-child {
+                border-bottom: none;
+            }
         }
     }
 }
