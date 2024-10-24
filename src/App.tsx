@@ -5,7 +5,7 @@ import { ReactComponent as LowBatteryIcon } from './icons/LowBattery.svg';
 import { ReactComponent as FullBatteryIcon } from './icons/FullBattery.svg';
 
 const App = () => {
-  const [currentQuadrants, setCurrentQuadrants] = useState<{ [key: string]: string[] }>({
+  const [quadrants, setQuadrants] = useState<{ [key: string]: string[] }>({
     quadrant1: [],
     quadrant2: [],
     quadrant3: [],
@@ -26,6 +26,13 @@ const App = () => {
     }));
   };
 
+  const addItemToSpecificQuadrant = (quadrantKey: string, newItem: string) => {
+    setQuadrants((prevQuadrants) => ({
+      ...prevQuadrants,
+      [quadrantKey]: [...prevQuadrants[quadrantKey], newItem], // Update the specific quadrant
+    }));
+  };
+
   const addItem = (quadrantKey: string, event: any) => {
     event.preventDefault();
     console.log('task', quadrantKey);
@@ -41,17 +48,21 @@ const App = () => {
     }
   };
 
-  const addItemToSpecificQuadrant = (quadrantKey: string, newItem: string) => {
-    setCurrentQuadrants((prevQuadrants) => ({
-      ...prevQuadrants,
-      [quadrantKey]: [...prevQuadrants[quadrantKey], newItem], // Update the specific quadrant
+  const deleteItem = (quadrantKey: string, deletedItemIndex: number) => {
+    deleteItemFromSpecificQuadrant(quadrantKey, deletedItemIndex);
+
+    setItems(prevItems => ({
+      ...prevItems,
+      [quadrantKey]: '' // Clear the input field after deleting the item
     }));
   };
 
-  // const deleteItem = (id: number) => {
-  //   const newItems = items.filter((item, index) => index !== id);
-  //   setItems(newItems); // Update the state with the filtered items
-  // };
+  const deleteItemFromSpecificQuadrant = (quadrantKey: string, deletedItemIndex: number) => {
+    setQuadrants((prevQuadrants) => ({
+      ...prevQuadrants,
+      [quadrantKey]: [...prevQuadrants[quadrantKey]].filter((item, index) => index !== deletedItemIndex), // Delete item from the specific quadrant
+    }));
+  };
 
   return (
     <div className="matrix-app">
@@ -62,9 +73,10 @@ const App = () => {
             lowBatteryIcon={<LowBatteryIcon />}
             fullBatteryIcon={<FullBatteryIcon />}
             items={items}
-            quadrants={currentQuadrants}
+            quadrants={quadrants}
             addItem={addItem}
             handleQuadrantInputChange={handleQuadrantInputChange}
+            deleteItem={deleteItem}
           />
         </div>
       </div>
