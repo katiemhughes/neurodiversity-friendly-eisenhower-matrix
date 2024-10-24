@@ -17,11 +17,12 @@ interface MatrixQuadrantProps {
     quadrants: Quadrants;
     addItem: (quadrantKey: string, event: any) => void;
     handleQuadrantInputChange: (quadrantKey: string, event: any) => void;
+    deleteItem: (quadrantKey: string, deletedItemIndex: number) => void;
     lowBatteryIcon: React.ReactElement<React.SVGProps<SVGSVGElement>>;
     fullBatteryIcon: React.ReactElement<React.SVGProps<SVGSVGElement>>;
   }
 
-const MatrixQuadrant: React.FC<MatrixQuadrantProps> = ({ items, quadrants, addItem, handleQuadrantInputChange, lowBatteryIcon, fullBatteryIcon }) => {
+const MatrixQuadrant: React.FC<MatrixQuadrantProps> = ({ items, quadrants, addItem, handleQuadrantInputChange, deleteItem, lowBatteryIcon, fullBatteryIcon }) => {
     const replaceQuadrantKeyWithTitle = (quadrantKey: string) => {
         switch (quadrantKey) {
             case 'quadrant1':
@@ -70,9 +71,6 @@ const MatrixQuadrant: React.FC<MatrixQuadrantProps> = ({ items, quadrants, addIt
     return (
         <>
             {Object.keys(quadrants).map((quadrantKey, quadrantIndex) => {
-                console.log('items', items);
-                console.log('quadrant', quadrantKey);
-
                 return (
                     <section className="matrix__category" key={quadrantKey}>
                         <div className="matrix__category--header">
@@ -100,6 +98,7 @@ const MatrixQuadrant: React.FC<MatrixQuadrantProps> = ({ items, quadrants, addIt
                             quadrants={quadrants}
                             quadrantKey={quadrantKey}
                             quadrantIndex={quadrantIndex}
+                            deleteItem={deleteItem}
                         />
                     </section>
                 );
