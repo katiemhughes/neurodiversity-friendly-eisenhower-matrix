@@ -55,8 +55,7 @@
     "husky": "^8.0.0",
     "lint-staged": "^15.2.10",
     "prettier": "^3.3.3",
-    "sass": "^1.79.1",
-    "typescript": "^5.6.3"
+    "sass": "^1.79.1"
   },
   "lint-staged": {
     "src/**/*.{ts,tsx,scss}": "prettier --write",
