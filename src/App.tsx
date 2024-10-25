@@ -41,7 +41,6 @@ const App = () => {
     event: React.MouseEvent<HTMLButtonElement>,
   ) => {
     event.preventDefault();
-    console.log('task', quadrantKey);
     const newItem = items[quadrantKey].trim();
 
     if (newItem) {
