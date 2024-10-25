@@ -16,13 +16,16 @@ const App = () => {
     quadrant1: '',
     quadrant2: '',
     quadrant3: '',
-    quadrant4: ''
+    quadrant4: '',
   });
 
-  const handleQuadrantInputChange = (quadrantKey: string, event: any) => {
-    setItems(prevItems => ({
+  const handleQuadrantInputChange = (
+    quadrantKey: string,
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    setItems((prevItems) => ({
       ...prevItems,
-      [quadrantKey]: event.target.value
+      [quadrantKey]: event.target.value,
     }));
   };
 
@@ -33,41 +36,50 @@ const App = () => {
     }));
   };
 
-  const addItem = (quadrantKey: string, event: any) => {
+  const addItem = (
+    quadrantKey: string,
+    event: React.MouseEvent<HTMLButtonElement>,
+  ) => {
     event.preventDefault();
-    console.log('task', quadrantKey);
     const newItem = items[quadrantKey].trim();
 
     if (newItem) {
       addItemToSpecificQuadrant(quadrantKey, newItem);
 
-      setItems(prevItems => ({
+      setItems((prevItems) => ({
         ...prevItems,
-        [quadrantKey]: '' // Clear the input field after adding the item
+        [quadrantKey]: '', // Clear the input field after adding the item
       }));
     }
+  };
+
+  const deleteItemFromSpecificQuadrant = (
+    quadrantKey: string,
+    deletedItemIndex: number,
+  ) => {
+    setQuadrants((prevQuadrants) => ({
+      ...prevQuadrants,
+      [quadrantKey]: [...prevQuadrants[quadrantKey]].filter(
+        (item, index) => index !== deletedItemIndex,
+      ), // Delete item from the specific quadrant
+    }));
   };
 
   const deleteItem = (quadrantKey: string, deletedItemIndex: number) => {
     deleteItemFromSpecificQuadrant(quadrantKey, deletedItemIndex);
 
-    setItems(prevItems => ({
+    setItems((prevItems) => ({
       ...prevItems,
-      [quadrantKey]: '' // Clear the input field after deleting the item
-    }));
-  };
-
-  const deleteItemFromSpecificQuadrant = (quadrantKey: string, deletedItemIndex: number) => {
-    setQuadrants((prevQuadrants) => ({
-      ...prevQuadrants,
-      [quadrantKey]: [...prevQuadrants[quadrantKey]].filter((item, index) => index !== deletedItemIndex), // Delete item from the specific quadrant
+      [quadrantKey]: '', // Clear the input field after deleting the item
     }));
   };
 
   return (
     <div className="matrix-app">
       <div className="matrix-app__container">
-        <h1 className="matrix-app__title">The Neurodiversity-Friendly Task Matrix</h1>
+        <h1 className="matrix-app__title">
+          The Neurodiversity-Friendly Task Matrix
+        </h1>
         <div className="matrix">
           <MatrixQuadrant
             lowBatteryIcon={<LowBatteryIcon />}
@@ -82,6 +94,6 @@ const App = () => {
       </div>
     </div>
   );
-}
+};
 
 export default App;
