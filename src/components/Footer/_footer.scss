@@ -1,0 +1,39 @@
+@import '../styles/variables';
+
+.footer {
+  font-family: $font-primary;
+  color: $color-secondary;
+  padding: 24px;
+
+  &__icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+  }
+
+  &__icon {
+    &--github {
+      height: 1.5rem;
+      width: 1.5rem;
+    }
+  }
+
+  &__portfolio {
+    font-family: $font-secondary;
+    color: $color-primary;
+    font-size: 0.8rem;
+    margin-bottom: 1.5rem;
+
+    &--link {
+      text-decoration: underline;
+      font-weight: 700;
+      color: $color-primary;
+    }
+  }
+}

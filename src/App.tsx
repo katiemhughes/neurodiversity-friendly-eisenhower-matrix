@@ -4,6 +4,7 @@ import './components/styles/main.scss';
 import MatrixQuadrant from './components/MatrixQuadrant/MatrixQuadrant';
 import { ReactComponent as LowBatteryIcon } from './icons/LowBattery.svg';
 import { ReactComponent as FullBatteryIcon } from './icons/FullBattery.svg';
+import Footer from './components/Footer/Footer';
 
 const App = () => {
   const locallyStoredItems: { [key: string]: string[] } = {
@@ -107,6 +108,7 @@ const App = () => {
           />
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
