@@ -97,7 +97,7 @@ const MatrixQuadrant: React.FC<MatrixQuadrantProps> = ({
                 title={replaceQuadrantKeyWithTitle(quadrantKey)
                   .split('/')[0]
                   .trim()}
-                size={3}
+                size={1.8}
               />
               {replaceQuadrantKeyWithBatteryIcon(quadrantKey)}
             </div>
