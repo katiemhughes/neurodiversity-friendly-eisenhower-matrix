@@ -1,5 +1,5 @@
 import React from 'react';
-import { Item } from '../MatrixQuadrant';
+import { Item } from '../MatrixQuadrant/MatrixQuadrant';
 
 interface MatrixFormProps {
   items: Item;

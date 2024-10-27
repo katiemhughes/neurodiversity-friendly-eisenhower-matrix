@@ -1,7 +1,7 @@
 import { mdiCheckCircle } from '@mdi/js';
 import Icon from '@mdi/react';
 import React from 'react';
-import { Item, Quadrants } from './MatrixQuadrant';
+import { Item, Quadrants } from '../MatrixQuadrant/MatrixQuadrant';
 
 interface MatrixItemsProps {
   items: Item;
