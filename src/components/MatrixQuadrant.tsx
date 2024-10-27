@@ -17,7 +17,7 @@ interface MatrixQuadrantProps {
   quadrants: Quadrants;
   addItem: (
     quadrantKey: string,
-    event: React.MouseEvent<HTMLButtonElement>,
+    event: React.FormEvent<HTMLFormElement>,
   ) => void;
   handleQuadrantInputChange: (
     quadrantKey: string,

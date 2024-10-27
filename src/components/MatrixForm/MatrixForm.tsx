@@ -5,7 +5,7 @@ interface MatrixFormProps {
   items: Item;
   quadrantKey: string;
   quadrantIndex: number;
-  addItem: (item: string, event: React.MouseEvent<HTMLButtonElement>) => void;
+  addItem: (item: string, event: React.FormEvent<HTMLFormElement>) => void;
   handleQuadrantInputChange: (
     quadrantKey: string,
     event: React.ChangeEvent<HTMLInputElement>,
@@ -19,7 +19,11 @@ const MatrixForm: React.FC<MatrixFormProps> = ({
   addItem,
   handleQuadrantInputChange,
 }) => (
-  <form className="matrix__form">
+  <form
+    className="matrix__form"
+    onSubmit={(event) => addItem(quadrantKey, event)}
+    aria-label="form"
+  >
     <input
       className="matrix__input"
       name={quadrantIndex.toString()}
@@ -31,12 +35,7 @@ const MatrixForm: React.FC<MatrixFormProps> = ({
       autoComplete="off"
       onChange={(event) => handleQuadrantInputChange(quadrantKey, event)}
     />
-    <button
-      className="matrix__button--add"
-      onClick={(event) => addItem(quadrantKey, event)}
-    >
-      Add
-    </button>
+    <button className="matrix__button--add">Add</button>
   </form>
 );
 
