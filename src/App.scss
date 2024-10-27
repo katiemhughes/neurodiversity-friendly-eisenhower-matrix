@@ -26,10 +26,18 @@ html {
 
 .matrix {
   font-family: $font-secondary;
-  padding: 16px 24px;
+  padding: 16px 8px;
   color: $color-secondary;
   display: flex;
   flex-direction: column;
+
+  @media screen and (min-width: 360px) {
+    padding: 16px 14px;
+  }
+
+  @media screen and (min-width: 375px) {
+    padding: 16px 24px;
+  }
 
   @media screen and (min-width: 600px) {
     padding: 24px;
@@ -37,12 +45,13 @@ html {
   }
 
   @media screen and (min-width: 768px) {
-    padding: 16px 24px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 16px 0px;
     gap: 0;
   }
 
-  @media screen and (min-width: 768px) {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+  @media screen and (min-width: 848px) {
+    padding: 16px 24px;
   }
 }
