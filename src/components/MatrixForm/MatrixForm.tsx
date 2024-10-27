@@ -1,3 +1,4 @@
+/* eslint-disable operator-linebreak */
 import React from 'react';
 import { Item } from '../MatrixQuadrant/MatrixQuadrant';
 
@@ -29,7 +30,10 @@ const MatrixForm: React.FC<MatrixFormProps> = ({
       name={quadrantIndex.toString()}
       id={quadrantIndex.toString()}
       value={
-        items[quadrantKey].charAt(0).toUpperCase() + items[quadrantKey].slice(1)
+        items[quadrantKey]
+          ? items[quadrantKey].charAt(0).toUpperCase() +
+            items[quadrantKey].slice(1)
+          : ''
       }
       placeholder="Next task"
       autoComplete="off"
