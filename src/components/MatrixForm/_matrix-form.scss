@@ -1,0 +1,27 @@
+@import '../styles/variables';
+
+.matrix {
+  &__form {
+    margin: 24px 0px 32px 0px;
+  }
+
+  &__input {
+    padding: 8px;
+  }
+
+  &__button {
+    &--add {
+      padding: 8px;
+      font-weight: 700;
+      background-color: $color-primary;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      margin-left: 4px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $hover-primary;
+      }
+    }
+  }
+}
