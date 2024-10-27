@@ -40,6 +40,10 @@
   }
 
   &__icon {
+    &--battery {
+      display: block;
+    }
+
     &--tick {
       color: $color-primary;
 
