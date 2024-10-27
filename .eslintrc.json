@@ -8,7 +8,8 @@
   ],
   "plugins": ["prettier"],
   "parserOptions": {
-    "project": "./tsconfig.json"
+    "project": "./tsconfig.json",
+    "extraFileExtensions": [".scss"]
   },
   "settings": {
     "import/resolver": {
