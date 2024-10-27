@@ -1,0 +1,32 @@
+@import '../styles/variables';
+
+.matrix {
+  &__category {
+    margin: 0px 0px 24px 0px;
+    padding: 16px 24px;
+    background-color: $section-background;
+    border-radius: 8px;
+
+    @media screen and (min-width: 768px) {
+      margin: 24px;
+    }
+
+    &--header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-align: left;
+      white-space: nowrap;
+    }
+  }
+
+  &__heading {
+    font-size: 18px;
+    margin-bottom: 12px;
+    color: $color-primary;
+  }
+
+  &__icons {
+    display: flex;
+  }
+}

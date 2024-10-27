@@ -1,0 +1,51 @@
+@import '../styles/variables';
+
+.matrix {
+  &__tasks {
+    list-style-type: none;
+    padding-left: 0;
+  }
+
+  &__task {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    border-bottom: 1px solid $color-line;
+    padding: 8px 0;
+
+    &:first-child {
+      padding-top: 0;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &--item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-align: left;
+    }
+  }
+
+  &__button {
+    &--done {
+      background-color: transparent;
+      border-color: transparent;
+      border-radius: 100%;
+      cursor: pointer;
+    }
+  }
+
+  &__icon {
+    &--tick {
+      color: $color-primary;
+
+      &:hover {
+        color: $hover-primary;
+      }
+    }
+  }
+}

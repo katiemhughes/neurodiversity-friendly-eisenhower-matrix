@@ -1,13 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+@import './components/styles/variables';
 
 body,
 html {
-  // height: 100vh;
-  // margin: 0;
-  // width: 100%;
-  background-color: #1e1e1e;
+  background-color: $color-background;
 }
 
 .matrix-app {
@@ -19,119 +17,32 @@ html {
   }
 
   &__title {
-    font-family: 'Cedarville Cursive', cursive;
+    font-family: $font-primary;
     font-size: 40px;
     margin: 40px 40px 30px 40px;
-    color: #f8f8f2;
+    color: $color-secondary;
   }
 }
 
 .matrix {
-  font-family: 'Inria Sans', sans-serif;
-  padding: 16px;
-  color: #f8f8f2;
+  font-family: $font-secondary;
+  padding: 16px 24px;
+  color: $color-secondary;
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (min-width: 600px) {
+    padding: 24px;
+    gap: 24px;
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 16px 24px;
+    gap: 0;
+  }
 
   @media screen and (min-width: 768px) {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  &__category {
-    margin: 0px 0px 24px 0px;
-    padding: 16px;
-    background-color: #282828;
-    border-radius: 8px;
-
-    @media screen and (min-width: 768px) {
-      margin: 24px;
-    }
-
-    &--header {
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      text-align: left;
-      white-space: nowrap;
-
-      @media screen and (min-width: 768px) {
-        justify-content: space-between;
-      }
-    }
-  }
-
-  &__heading {
-    font-size: 18px;
-    margin-bottom: 12px;
-    color: #50fa7b;
-  }
-
-  &__icons {
-    display: flex;
-  }
-
-  &__icon {
-    &--tick {
-      color: #50fa7b;
-
-      &:hover {
-        color: #3cbf5a;
-      }
-    }
-  }
-
-  &__form {
-    margin: 24px 0px;
-  }
-
-  &__input {
-    padding: 8px;
-  }
-
-  &__button {
-    &--add {
-      padding: 8px;
-      font-weight: 700;
-      background-color: #50fa7b;
-      border: 1px solid transparent;
-      border-radius: 4px;
-      margin-left: 4px;
-      cursor: pointer;
-
-      &:hover {
-        background-color: #3cbf5a;
-      }
-    }
-
-    &--done {
-      background-color: transparent;
-      border-color: transparent;
-      border-radius: 100%;
-      cursor: pointer;
-    }
-  }
-
-  &__tasks {
-    list-style-type: none;
-    padding-left: 0;
-  }
-
-  &__task {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-
-    &--item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 8px 0;
-      border-bottom: 1px solid #444;
-      text-align: left;
-
-      &:last-child {
-        border-bottom: none;
-      }
-    }
   }
 }

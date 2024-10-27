@@ -1,16 +1,25 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.scss';
-import MatrixQuadrant from './components/MatrixQuadrant';
+import './components/styles/main.scss';
+import MatrixQuadrant from './components/MatrixQuadrant/MatrixQuadrant';
 import { ReactComponent as LowBatteryIcon } from './icons/LowBattery.svg';
 import { ReactComponent as FullBatteryIcon } from './icons/FullBattery.svg';
 
 const App = () => {
-  const [quadrants, setQuadrants] = useState<{ [key: string]: string[] }>({
+  const locallyStoredItems: { [key: string]: string[] } = {
     quadrant1: [],
     quadrant2: [],
     quadrant3: [],
     quadrant4: [],
+  };
+
+  Object.keys(localStorage).forEach((key) => {
+    locallyStoredItems[key] = JSON.parse(localStorage.getItem(key) || '[]');
   });
+
+  const [quadrants, setQuadrants] = useState<{ [key: string]: string[] }>(
+    locallyStoredItems,
+  );
 
   const [items, setItems] = useState<{ [key: string]: string }>({
     quadrant1: '',
@@ -18,6 +27,12 @@ const App = () => {
     quadrant3: '',
     quadrant4: '',
   });
+
+  useEffect(() => {
+    Object.keys(quadrants).forEach((key) => {
+      localStorage.setItem(key, JSON.stringify(quadrants[key]));
+    });
+  }, [quadrants]);
 
   const handleQuadrantInputChange = (
     quadrantKey: string,
@@ -44,11 +59,6 @@ const App = () => {
     const newItem = items[quadrantKey].trim();
 
     if (newItem) {
-      localStorage.setItem(
-        quadrantKey,
-        JSON.stringify([...quadrants[quadrantKey], newItem]),
-      );
-
       addItemToSpecificQuadrant(quadrantKey, newItem);
 
       setItems((prevItems) => ({
@@ -64,7 +74,7 @@ const App = () => {
   ) => {
     setQuadrants((prevQuadrants) => ({
       ...prevQuadrants,
-      [quadrantKey]: [...prevQuadrants[quadrantKey]].filter(
+      [quadrantKey]: prevQuadrants[quadrantKey].filter(
         (item, index) => index !== deletedItemIndex,
       ), // Delete item from the specific quadrant
     }));
@@ -77,15 +87,6 @@ const App = () => {
       ...prevItems,
       [quadrantKey]: '', // Clear the input field after deleting the item
     }));
-
-    localStorage.setItem(
-      quadrantKey,
-      JSON.stringify([
-        ...quadrants[quadrantKey].filter(
-          (item, index) => index !== deletedItemIndex,
-        ),
-      ]),
-    );
   };
 
   return (
