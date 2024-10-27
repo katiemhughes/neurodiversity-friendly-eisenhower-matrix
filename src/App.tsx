@@ -38,12 +38,17 @@ const App = () => {
 
   const addItem = (
     quadrantKey: string,
-    event: React.MouseEvent<HTMLButtonElement>,
+    event: React.FormEvent<HTMLFormElement>,
   ) => {
     event.preventDefault();
     const newItem = items[quadrantKey].trim();
 
     if (newItem) {
+      localStorage.setItem(
+        quadrantKey,
+        JSON.stringify([...quadrants[quadrantKey], newItem]),
+      );
+
       addItemToSpecificQuadrant(quadrantKey, newItem);
 
       setItems((prevItems) => ({
@@ -72,6 +77,15 @@ const App = () => {
       ...prevItems,
       [quadrantKey]: '', // Clear the input field after deleting the item
     }));
+
+    localStorage.setItem(
+      quadrantKey,
+      JSON.stringify([
+        ...quadrants[quadrantKey].filter(
+          (item, index) => index !== deletedItemIndex,
+        ),
+      ]),
+    );
   };
 
   return (

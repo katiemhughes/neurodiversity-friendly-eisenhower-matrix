@@ -1,7 +1,7 @@
 import { mdiHeadHeart, mdiHeadMinus } from '@mdi/js';
 import Icon from '@mdi/react';
 import React from 'react';
-import MatrixForm from './MatrixForm';
+import MatrixForm from './MatrixForm/MatrixForm';
 import MatrixItems from './MatrixItems';
 
 export interface Quadrants {
@@ -17,7 +17,7 @@ interface MatrixQuadrantProps {
   quadrants: Quadrants;
   addItem: (
     quadrantKey: string,
-    event: React.MouseEvent<HTMLButtonElement>,
+    event: React.FormEvent<HTMLFormElement>,
   ) => void;
   handleQuadrantInputChange: (
     quadrantKey: string,
