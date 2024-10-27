@@ -1,8 +1,8 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import MatrixItems from '../MatrixItems';
-import { Item, Quadrants } from '../MatrixQuadrant';
+import MatrixItems from './MatrixItems';
+import { Item, Quadrants } from '../MatrixQuadrant/MatrixQuadrant';
 
 // Mock localStorage
 const localStorageMock = (() => {

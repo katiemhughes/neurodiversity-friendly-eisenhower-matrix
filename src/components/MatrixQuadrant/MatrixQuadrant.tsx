@@ -1,8 +1,8 @@
 import { mdiHeadHeart, mdiHeadMinus } from '@mdi/js';
 import Icon from '@mdi/react';
 import React from 'react';
-import MatrixForm from './MatrixForm/MatrixForm';
-import MatrixItems from './MatrixItems';
+import MatrixForm from '../MatrixForm/MatrixForm';
+import MatrixItems from '../MatrixItems/MatrixItems';
 
 export interface Quadrants {
   [key: string]: string[];

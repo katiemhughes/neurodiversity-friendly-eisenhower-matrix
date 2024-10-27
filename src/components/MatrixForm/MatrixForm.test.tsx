@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import MatrixForm from './MatrixForm';
-import { Item } from '../MatrixQuadrant';
+import { Item } from '../MatrixQuadrant/MatrixQuadrant';
 
 // Mock localStorage
 const localStorageMock = (() => {
