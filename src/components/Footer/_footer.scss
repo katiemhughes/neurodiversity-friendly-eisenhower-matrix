@@ -6,21 +6,11 @@
   align-items: center;
   flex-direction: column;
   position: absolute;
-  width: 100%;
   right: 0;
   left: 0;
   font-family: $font-primary;
   color: $color-secondary;
-  padding: 24px;
-
-  @media screen and (min-width: 768px) {
-    bottom: 0;
-    padding: 4px 24px;
-  }
-
-  @media screen and (min-width: 848px) {
-    padding: 24px;
-  }
+  padding: 24px 0px;
 
   &__icons {
     display: flex;
