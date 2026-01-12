@@ -41,7 +41,10 @@ const App = () => {
       setHydrated(true);
     });
 
-    unsubscribe();
+    // eslint-disable-next-line consistent-return
+    return () => {
+      unsubscribe(); // cleanup on unmount or user change
+    };
   }, [user]);
 
   useEffect(() => {

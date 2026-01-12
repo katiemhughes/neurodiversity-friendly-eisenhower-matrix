@@ -9,21 +9,32 @@ export const subscribeToMatrix = (
 ) => {
   const ref = doc(db, 'users', userId, 'matrix', 'main');
 
-  return onSnapshot(ref, (snap) => {
+  const unsubscribe = onSnapshot(ref, (snap) => {
     if (snap.exists()) {
-      setQuadrants(snap.data());
+      setQuadrants(snap.data() as Quadrants);
     } else {
-      setDoc(ref, {
-        quadrant1: [],
-        quadrant2: [],
-        quadrant3: [],
-        quadrant4: [],
-      });
+      setDoc(
+        ref,
+        {
+          quadrant1: [],
+          quadrant2: [],
+          quadrant3: [],
+          quadrant4: [],
+        },
+        { merge: true },
+      );
     }
   });
+
+  return unsubscribe;
 };
 
-export const saveMatrix = (userId: string, quadrants: Quadrants) => {
+export const saveMatrix = async (userId: string, quadrants: Quadrants) => {
   const ref = doc(db, 'users', userId, 'matrix', 'main');
-  return setDoc(ref, quadrants, { merge: true });
+
+  try {
+    await setDoc(ref, quadrants, { merge: true });
+  } catch (error) {
+    console.error('Error saving matrix:', error);
+  }
 };
