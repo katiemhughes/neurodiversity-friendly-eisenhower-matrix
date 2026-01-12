@@ -37,6 +37,8 @@ const MatrixQuadrant: React.FC<MatrixQuadrantProps> = ({
   lowBatteryIcon,
   fullBatteryIcon,
 }) => {
+  const QUADRANT_ORDER = ['quadrant1', 'quadrant2', 'quadrant3', 'quadrant4'];
+
   const replaceQuadrantKeyWithTitle = (quadrantKey: string) => {
     switch (quadrantKey) {
       case 'quadrant1':
@@ -84,7 +86,7 @@ const MatrixQuadrant: React.FC<MatrixQuadrantProps> = ({
 
   return (
     <>
-      {Object.keys(quadrants).map((quadrantKey, quadrantIndex) => (
+      {QUADRANT_ORDER.map((quadrantKey, quadrantIndex) => (
         <section className="matrix__category" key={quadrantKey}>
           <div className="matrix__category--header">
             <h2 className="matrix__heading">
