@@ -4,22 +4,14 @@
   &__form {
     display: flex;
     margin: 24px 0px 32px 0px;
-
-    @media screen and (min-width: 425px) {
-      justify-content: center;
-    }
   }
 
   &__input {
     padding: 8px;
     width: 100%;
 
-    @media screen and (min-width: 425px) {
-      width: 250px;
-    }
-
     @media screen and (min-width: 768px) {
-      width: 200px;
+      width: 50%;
     }
   }
 
